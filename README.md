@@ -1,6 +1,6 @@
 # Fractal Studio
 
-A high-performance, GPU-accelerated fractal explorer built with Next.js 15, WebGL 2.0, and TypeScript. Features real-time rendering at 60FPS with advanced optimization techniques including triple buffering, adaptive quality, and Web Workers.
+A high-performance, GPU-accelerated fractal explorer built with Next.js 15, WebGL 2.0, and TypeScript. Features real-time rendering at 60FPS with advanced optimization techniques.
 
 ## Gallery
 
@@ -17,186 +17,47 @@ A high-performance, GPU-accelerated fractal explorer built with Next.js 15, WebG
 
 </div>
 
-Copyright (c) mangobanaani
-
 ## Features
 
-### Core Technical Features
-- **WebGL 2.0 Rendering Pipeline** with OffscreenCanvas support
-- **Triple Buffering** implementation to prevent rendering stalls
-- **Precision Control**: User-selectable highp/mediump/lowp shader precision
-- **Shader Hot-Reloading** during development with dynamic GLSL import
-- **Performance Optimizations**:
-  - Debounced parameter updates for smooth interactions
-  - Level-of-Detail (LOD) system for adaptive quality
-  - Web Workers for fractal computation and color palette generation
-  - Automatic performance monitoring and optimization suggestions
+- **11 Fractal Types**: Mandelbrot, Julia, Burning Ship, Lyapunov, Newton, Tricorn, Celtic, Perpendicular, Heart, Phoenix, Lambda
+- **WebGL 2.0 Rendering**: Real-time GPU acceleration with triple buffering
+- **Interactive Controls**: Pan, zoom, touch support, keyboard shortcuts
+- **Multiple Color Palettes**: Scientific and artistic color schemes
+- **Performance Optimized**: Adaptive quality, Web Workers, precision control
 
-### Fractal Types
-- **Mandelbrot Set** - The classic fractal with infinite detail
-- **Julia Sets** - Beautiful connected/disconnected fractals with customizable constants
-- **Burning Ship** - Ship-like fractal with unique mathematical properties
-- **Lyapunov Fractals** - Parameter space visualization of dynamical systems
-- **Newton Fractals** - Root-finding algorithm visualizations
-- **Tricorn** - Conjugate Mandelbrot variations
-- **Celtic Mandelbrot** - Modified Mandelbrot with absolute value operations
-- **Perpendicular Mandelbrot** - Alternative Mandelbrot variant
-- **Heart Fractal** - Heart-shaped mathematical art
-- **Phoenix Fractal** - Recursive fractal with unique dynamics
-- **Lambda Fractal** - Parameter-driven complex dynamics
-
-### Advanced Rendering
-- **Multiple Color Palettes**: Viridis, Plasma, Inferno, Magma, Cividis, Twilight, Ocean, Fire, Rainbow, Electric
-- **Smooth Coloring**: Continuous iteration counts for seamless gradients
-- **Anti-aliasing**: High-quality rendering with precision control
-
-### Interactive Controls
-- **Glassmorphism UI**: Modern frosted glass interface design
-- **Touch/Mouse Support**: Pan with drag, zoom with wheel/pinch
-- **Keyboard Shortcuts**: Quick preset switching (1-5), controls toggle (H), reset (R)
-- **Real-time Parameters**: Zoom, center, iterations, escape radius, Julia constants
-
-## Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- Modern browser with WebGL 2.0 support
-- TypeScript knowledge for development
-
-### Installation
+## Quick Start
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/fractal-studio.git
-cd fractal-studio
-
-# Install dependencies
+git clone https://github.com/mangobanaani/fractalstudio.git
+cd fractalstudio
 npm install
-
-# Start development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Development Commands
-
-```bash
-# Development with hot reload
-npm run dev
-
-# Production build
-npm run build
-npm run start
-
-# Testing
-npm run test           # Unit tests with Jest
-npm run test:watch     # Watch mode for development
-npm run test:coverage  # Generate coverage report
-
-# Code quality
-npm run lint           # ESLint checking
-```
+Open [http://localhost:3000](http://localhost:3000)
 
 ## Usage
 
-### Basic Navigation
-- **Pan**: Click and drag or touch and drag
-- **Zoom**: Mouse wheel or pinch gesture
-- **Reset View**: Press R or click preset button
-- **Toggle Controls**: Press H key
+- **Pan**: Drag to move around
+- **Zoom**: Mouse wheel or pinch
+- **Presets**: Press 1-5 for quick fractal switching
+- **Toggle UI**: Press H to hide/show controls
+- **Reset**: Press R to reset view
 
-### Keyboard Shortcuts
-- `1-5`: Switch between fractal presets
-- `H`: Toggle UI controls visibility
-- `R`: Reset to preset defaults
-
-### Advanced Parameters
-
-#### Mandelbrot Set
-- **Center**: Complex coordinate to focus on
-- **Zoom**: Magnification level (0.001 to 1000)
-- **Max Iterations**: Quality vs performance trade-off (50-1000)
-- **Escape Radius**: Mathematical boundary (2, 4, or 8)
-
-#### Julia Sets
-- **Julia Constant**: Real and imaginary components defining the fractal shape
-- Famous constants included:
-  - Classic Dragon: -0.7269 + 0.1889i
-  - Douady Rabbit: -0.123 + 0.745i
-  - Lightning: -0.8 + 0.156i
-
-#### Performance Settings
-- **Shader Precision**: Balance quality vs performance
-  - `highp`: Best quality, slower on some devices
-  - `mediump`: Good balance for most devices  
-  - `lowp`: Fastest rendering, lower quality
-
-## Architecture
-
-### Project Structure
-```
-src/
-├── components/          # React UI components
-│   ├── FractalStudio.tsx   # Main application component
-│   ├── ParameterControls.tsx
-│   └── PresetSelector.tsx
-├── lib/                 # Core libraries
-│   ├── webgl/              # WebGL rendering engine
-│   │   └── shaders.ts
-│   ├── fractals/           # Modular fractal definitions
-│   │   ├── base.ts
-│   │   ├── mandelbrot.ts
-│   │   ├── julia.ts
-│   │   └── loader.ts
-│   ├── fractal-renderer.ts # Main renderer class
-│   ├── fractal-presets-modular.ts # Fractal definitions
-│   └── color-palettes.ts   # Color systems
-├── types/               # TypeScript definitions
-│   └── fractal.ts
-└── __tests__/          # Unit tests
-    └── fractal-presets.test.ts
-```
-
-```typescript
-### Key Classes
-
-#### FractalRenderer
-Main rendering engine managing WebGL context, shaders, and frame rendering.
-
-```typescript
-const renderer = new FractalRenderer(canvas, {
-  escapeRadius: 2,
-  maxIterations: 100,
-  center: { real: -0.5, imag: 0.0 },
-  zoom: 4.0,
-  colorPalette: 'viridis',
-  precision: 'highp'
-});
-
-renderer.startRenderLoop();
-```
-
-## Testing
-
-### Unit Tests (Jest)
-Tests for mathematical functions, parameter validation, and utility functions.
+## Development
 
 ```bash
-# Run specific test suites
-npm test fractal-presets
-
-# Watch mode during development
-npm run test:watch
-
-# Generate coverage report
-npm run test:coverage
+npm run dev          # Development server
+npm run build        # Production build
+npm run test         # Run tests
+npm run lint         # Code quality check
 ```
 
-Key test areas:
-- Fractal parameter validation and edge cases
-- Color palette generation and interpolation
-- Mathematical precision and NaN protection
+## License
+
+MIT License
+
+Copyright (c) mangobanaani
 
 ## Performance Optimization
 
