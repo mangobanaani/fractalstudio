@@ -25,13 +25,13 @@
 # misc
 .DS_Store
 *.pem
-Thumbs.db
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+lerna-debug.log*
 
 # env files (can opt-in for committing if needed)
 .env*
@@ -48,15 +48,6 @@ next-env.d.ts
 .vscode/settings.json
 .idea/
 *.swp
-
-# Documentation (exclude LLM API docs)
-*LLM*.md
-*llm*.md
-API_*.md
-api_*.md
-
-# Keep only main README
-!README.md
 *.swo
 
 # OS
@@ -71,8 +62,6 @@ Thumbs.db
 # Logs
 logs
 *.log
-lerna-debug.log*
-.pnpm-debug.log*
 
 # Runtime data
 pids
